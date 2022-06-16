@@ -1,11 +1,6 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/films" active-class="panda">电影
-      </router-link> |
-      <router-link to="/cinemas" active-class="panda">影院</router-link> |
-      <router-link to="/center" active-class="panda">我的</router-link>
-    </nav>
+    <tabbar></tabbar>
     <router-view></router-view>
   </div>
 </template>
@@ -18,17 +13,28 @@
 //   text-align: center;
 //   color: #2c3e50;
 // }
+*{
+  margin: 0;
+  padding: 0;
+}
+html, body {
+  height: 100%;
+}
+ul {
+  list-style: none;
+}
 
-nav {
-  padding: 30px;
+</style>
+<script>
+import tabbar from '@/components/Tabbar.vue'
+export default {
+  data () {
+    return {
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.panda {
-      color: #42b983;
     }
+  },
+  components: {
+    tabbar
   }
 }
-</style>
+</script>

@@ -1,22 +1,45 @@
 <template>
   <div>
-    <div style="height:200px; background: yellow;">大轮播</div>
-    <router-link to="/films/Nowplaying" active-class="panda">
-        正在热映
-    </router-link>
-    <router-link to="/films/Comingsoon" active-class="panda">
-        即将上映
-    </router-link>
-  <div><router-view></router-view></div>
+    <film-swiper :key="datalist.length">
+      <film-swiper-item v-for="data of datalist" :key="data.id" class="filmswiperitem">
+        <img :src="data.imgUrl" />
+      </film-swiper-item>
+
+    </film-swiper>
+    <div>
+
+    </div>
+    <router-view></router-view>
   </div>
 </template>
-<style lang="scss">
-  a {
-    font-weight: bold;
-    color: #2c3e50;
 
-    &.panda {
-      color: #42b983;
+<script>
+import filmSwiper from '../components/films/FilmSwiper.vue'
+import filmSwiperItem from '../components/films/FilmSwiperItem.vue'
+import axios from 'axios'
+export default {
+  data () {
+    return {
+      datalist: []
+    }
+  },
+  mounted () {
+    axios.get('/banner.json').then(res => {
+      this.datalist = res.data.banner
+    })
+  },
+  components: {
+    filmSwiper,
+    filmSwiperItem
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+  .filmswiperitem {
+    img{
+      width: 100%;
+      height: 100%;
     }
   }
 </style>

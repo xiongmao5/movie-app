@@ -5,6 +5,8 @@ import AppFilms from '../views/App-films.vue'
 import Nowplaying from '../views/films/Nowplaying.vue'
 import Comingsoon from '../views/films/Comingsoon.vue'
 import AppCenter from '@/views/App-center.vue'
+import Order from '@/views/Order.vue'
+import Login from '@/views/Login.vue'
 import AppCinemas from '../views/App-cinemas.vue'
 import Search from '../views/Search.vue'
 import Detail from '../views/Detail.vue'
@@ -37,8 +39,21 @@ const routes = [
   },
   {
     path: '/center',
-    name: 'home',
-    component: AppCenter
+    component: AppCenter,
+    meta: {
+      isPandaRequired: true
+    }
+  },
+  {
+    path: '/login',
+    component: Login
+  },
+  {
+    path: '/order',
+    component: Order,
+    meta: {
+      isPandaRequired: true
+    }
   },
   {
     path: '/cinemas/search',
@@ -64,6 +79,23 @@ const router = new VueRouter({
   mode: 'history',
   // base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.isPandaRequired) {
+    if (localStorage.getItem('token')) {
+      next()
+    } else {
+      next({
+        path: '/login',
+        query: {
+          redirect: to.fullPath
+        }
+      })
+    }
+  } else {
+    next()
+  }
 })
 
 export default router
