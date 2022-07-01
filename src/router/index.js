@@ -8,6 +8,7 @@ import AppCenter from '@/views/App-center.vue'
 import Order from '@/views/Order.vue'
 import Login from '@/views/Login.vue'
 import AppCinemas from '../views/App-cinemas.vue'
+import City from '@/views/City.vue'
 import Search from '../views/Search.vue'
 import Detail from '../views/Detail.vue'
 Vue.use(VueRouter)
@@ -28,7 +29,7 @@ const routes = [
       },
       {
         path: '/films',
-        redirect: '/films/Nowplaying'
+        redirect: '/films/nowplaying'
       }
     ]
   },
@@ -61,10 +62,12 @@ const routes = [
   },
   {
     path: '/cinemas',
-    name: 'home',
     component: AppCinemas
   },
-
+  {
+    path: '/city',
+    component: City
+  },
   {
     path: '*',
     redirect: '/films'

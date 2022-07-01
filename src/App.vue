@@ -1,7 +1,9 @@
 <template>
   <div id="app">
-    <tabbar></tabbar>
-    <router-view></router-view>
+    <tabbar ref="mytabbar" v-show="$store.state.isTabbarShow"></tabbar>
+    <div class="foot">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
@@ -16,17 +18,23 @@
 *{
   margin: 0;
   padding: 0;
+  // box-sizing: border-box;
 }
 html, body {
   height: 100%;
+  background: rgb(244, 244, 244);
 }
 ul {
   list-style: none;
+}
+.foot{
+  margin-bottom: 3.0625rem;
 }
 
 </style>
 <script>
 import tabbar from '@/components/Tabbar.vue'
+
 export default {
   data () {
     return {

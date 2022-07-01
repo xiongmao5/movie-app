@@ -1,21 +1,25 @@
 <template>
   <footer>
     <ul>
-      <li>
-        <router-link to="/films" active-class="panda">
-        <span class="iconfont">&#xe62e;</span>电影
-        </router-link>
-      </li>
-      <li>
-        <router-link to="/cinemas" active-class="panda">
-        <span class="iconfont">&#xe8c0;</span>影院
-        </router-link>
+      <router-link to="/films" active-class="panda">
+        <li>
+          <i class="iconfont">&#xe630;</i>
+          <span>电影</span>
         </li>
-      <li>
-        <router-link to="/center" active-class="panda">
-        <span class="iconfont">&#xe615;</span>我的
-        </router-link>
-      </li>
+      </router-link>
+      <router-link to="/cinemas" active-class="panda">
+        <li>
+          <i class="iconfont">&#xe8c0;</i>
+          <span>影院</span>
+        </li>
+      </router-link>
+      <router-link to="/center" active-class="panda">
+        <li>
+          <i class="iconfont">&#xe615;</i>
+          <span>我的</span>
+        </li>
+      </router-link>
+
     </ul>
   </footer>
 </template>
@@ -25,17 +29,27 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 3.0625rem;
+    height: 51px;
     background: white;
+    z-index: 10000;
     ul {
       display: flex;
       justify-content: space-around;
+      // background: rgba(0, 0, 0, .1);
     }
-    li{
+    li {
       flex: 1;
       text-align: center;
       font-size: 1rem;
-      line-height: 3.0625rem;
+      line-height: 1.5rem;
+      display: flex;
+      flex-direction: column;
+    }
+    i {
+      font-size: 1.5rem
+    }
+    span {
+      font-size: 1rem;
     }
     a {
       font-weight: bold;

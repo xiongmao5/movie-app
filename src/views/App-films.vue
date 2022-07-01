@@ -4,17 +4,15 @@
       <film-swiper-item v-for="data of datalist" :key="data.id" class="filmswiperitem">
         <img :src="data.imgUrl" />
       </film-swiper-item>
-
     </film-swiper>
-    <div>
-
-    </div>
+    <film-header class="sticky"></film-header>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
 import filmSwiper from '../components/films/FilmSwiper.vue'
+import filmHeader from '../components/films/FilmHeader.vue'
 import filmSwiperItem from '../components/films/FilmSwiperItem.vue'
 import axios from 'axios'
 export default {
@@ -30,7 +28,8 @@ export default {
   },
   components: {
     filmSwiper,
-    filmSwiperItem
+    filmSwiperItem,
+    filmHeader
   }
 }
 </script>
@@ -41,5 +40,11 @@ export default {
       width: 100%;
       height: 100%;
     }
+  }
+  .sticky {
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 100;
   }
 </style>
