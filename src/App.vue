@@ -1,32 +1,48 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view/>
+    <tabbar ref="mytabbar" v-show="$store.state.isTabbarShow"></tabbar>
+    <div class="foot">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+// #app {
+//   font-family: Avenir, Helvetica, Arial, sans-serif;
+//   -webkit-font-smoothing: antialiased;
+//   -moz-osx-font-smoothing: grayscale;
+//   text-align: center;
+//   color: #2c3e50;
+// }
+*{
+  margin: 0;
+  padding: 0;
+  // box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+  background: rgb(244, 244, 244);
+}
+ul {
+  list-style: none;
+}
+.foot{
+  margin-bottom: 3.0625rem;
 }
 
-nav {
-  padding: 30px;
+</style>
+<script>
+import tabbar from '@/components/Tabbar.vue'
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+export default {
+  data () {
+    return {
 
-    &.router-link-exact-active {
-      color: #42b983;
     }
+  },
+  components: {
+    tabbar
   }
 }
-</style>
+</script>

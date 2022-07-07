@@ -1,0 +1,7 @@
+.van-image-preview__close-icon {
+  font-family: "iconfont";
+  font-size: .875rem;
+  &:before {
+    content: "\e603";
+  }
+}
